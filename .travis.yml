@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 11.6.0
+cache: npm
+
+
+install:
+  - npm install
+  
+branches:
+only:
+  - test-ci
+  
+script:
+  - docker pull loginzika
+  - docker run -v loginzika
+
+after_script:
+  - bash ./telegram_notification.sh
+  
+
